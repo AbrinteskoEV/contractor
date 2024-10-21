@@ -1,0 +1,13 @@
+init:
+	@docker network create contractor
+
+deploy:
+	@docker-compose -f ./docker/app/docker-compose.yml build 
+	@docker-compose -f ./docker/app/docker-compose.yml up -d -V
+
+exec:
+	@docker exec -it contractor-php bash
+
+down:
+	@docker-compose -f ./docker/app/docker-compose.yml down --remove-orphans -v
+
